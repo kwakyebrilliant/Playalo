@@ -12,7 +12,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Dapp University
+          Playalo
         </a>
       </nav>
       <div className="container-fluid mt-5">
