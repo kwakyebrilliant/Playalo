@@ -7,4 +7,5 @@ import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 contract MusicNFTMarketplace is ERC721, Ownable {
      string public baseURI =
         "https://bafybeidhjjbjonyqcahuzlpt7sznmh4xrlbspa3gstop5o47l6gsiaffee.ipfs.nftstorage.link/";
+        
 }
