@@ -40,6 +40,21 @@ describe("MusicNFTMarketplace", function () {
           expect(await nftMarketplace.artist()).to.equal(artist.address);
         });
 
+        it("Should mint then list all the music nfts", async function () {
+            expect(await nftMarketplace.balanceOf(nftMarketplace.address)).to.equal(8);
+            // Get each item from the marketItems array then check fields to ensure they are correct
+            await Promise.all(prices.map(async (i, indx) => {
+              const item = await nftMarketplace.marketItems(indx)
+              expect(item.tokenId).to.equal(indx)
+              expect(item.seller).to.equal(deployer.address)
+              expect(item.price).to.equal(i)
+            }))
+          });
+
+          it("Ether balance should equal deployment fees", async function () {
+            expect(await ethers.provider.getBalance(nftMarketplace.address)).to.equal(deploymentFees)
+          });
+
     });
 
 });
