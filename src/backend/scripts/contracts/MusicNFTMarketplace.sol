@@ -36,5 +36,10 @@ contract MusicNFTMarketplace is ERC721("DAppFi", "DAPP"), Ownable {
                 marketItems.push(MarketItem(i, payable(msg.sender), _prices[i]));
                 }
         }
+
+        /* Updates the royalty fee of the contract */
+    function updateRoyaltyFee(uint256 _royaltyFee) external onlyOwner {
+        royaltyFee = _royaltyFee;
+    }
         
 }
