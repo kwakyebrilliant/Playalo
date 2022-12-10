@@ -25,6 +25,12 @@ contract MusicNFTMarketplace is ERC721("DAppFi", "DAPP"), Ownable {
         uint256 price
     );
 
+     event MarketItemRelisted(
+        uint256 indexed tokenId,
+        address indexed seller,
+        uint256 price
+    );
+
         constructor(
                 uint256 _royaltyFee,
                 address _artist,
@@ -63,6 +69,17 @@ contract MusicNFTMarketplace is ERC721("DAppFi", "DAPP"), Ownable {
         payable(artist).transfer(royaltyFee);
         payable(seller).transfer(msg.value);
         emit MarketItemBought(_tokenId, seller, msg.sender, price);
+    }
+
+     /* Allows someone to resell their music nft */
+    function resellToken(uint256 _tokenId, uint256 _price) external payable {
+        require(msg.value == royaltyFee, "Must pay royalty");
+        require(_price > 0, "Price must be greater than zero");
+        marketItems[_tokenId].price = _price;
+        marketItems[_tokenId].seller = payable(msg.sender);
+
+        _transfer(msg.sender, address(this), _tokenId);
+        emit MarketItemRelisted(_tokenId, msg.sender, _price);
     }
         
 }
