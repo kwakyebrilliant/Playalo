@@ -26,7 +26,7 @@ function App() {
               >
                 <img src={logo} className="App-logo" alt="logo"/>
               </a>
-              <h1 className= "mt-5">Dapp University Starter Kit</h1>
+              <h1 className= "mt-5">Playalo University</h1>
               <p>
                 Edit <code>src/frontend/components/App.js</code> and save to reload.
               </p>
