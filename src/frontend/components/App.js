@@ -15,15 +15,20 @@ function App() {
   const [account, setAccount] = useState(null)
 
   const web3Handler = async () => {
-    // const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
-    // setAccount(accounts[0])
-    // // Get provider from Metamask
+    const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+    setAccount(accounts[0])
+    // Get provider from Metamask
     const provider = new ethers.providers.Web3Provider(window.ethereum)
-    // // Get signer
-    // const signer = provider.getSigner()
-    // loadContract(signer)
+    // Get signer
+    const signer = provider.getSigner()
+    loadContract(signer)
   }
-
+  const loadContract = async (signer) => {
+    // Get deployed copy of music nft marketplace contract
+    // const contract = new ethers.Contract(MusicNFTMarketplaceAddress.address, MusicNFTMarketplaceAbi.abi, signer)
+    // setContract(contract)
+    // setLoading(false)
+  }
   return (
      <BrowserRouter>
       <div className="App">
