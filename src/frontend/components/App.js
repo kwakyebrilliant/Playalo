@@ -5,6 +5,7 @@ import {
   Route
 } from "react-router-dom";
 import { useState } from 'react'
+import { ethers } from "ethers";
 import { Spinner, Navbar, Nav, Button, Container } from 'react-bootstrap'
 import logo from './logo.png';
 import './App.css';
@@ -17,7 +18,7 @@ function App() {
     // const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
     // setAccount(accounts[0])
     // // Get provider from Metamask
-    // const provider = new ethers.providers.Web3Provider(window.ethereum)
+    const provider = new ethers.providers.Web3Provider(window.ethereum)
     // // Get signer
     // const signer = provider.getSigner()
     // loadContract(signer)
