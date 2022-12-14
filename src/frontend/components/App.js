@@ -13,6 +13,7 @@ import './App.css';
 function App() {
   const [loading, setLoading] = useState(true)
   const [account, setAccount] = useState(null)
+  const [contract, setContract] = useState({})
 
   const web3Handler = async () => {
     const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
