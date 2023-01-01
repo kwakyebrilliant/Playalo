@@ -24,12 +24,14 @@ function App() {
     const signer = provider.getSigner()
     loadContract(signer)
   }
+  
   const loadContract = async (signer) => {
     // Get deployed copy of music nft marketplace contract
     // const contract = new ethers.Contract(MusicNFTMarketplaceAddress.address, MusicNFTMarketplaceAbi.abi, signer)
     // setContract(contract)
     // setLoading(false)
   }
+
   return (
      <BrowserRouter>
       <div className="App">
