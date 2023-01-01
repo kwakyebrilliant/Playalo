@@ -80,7 +80,7 @@ function App() {
               <Route path="/my-tokens" />
               <Route path="/my-resales" />
             </Routes>
-          )}
+          )} 
         </div>
 
       </div>
