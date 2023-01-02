@@ -6,6 +6,8 @@ import {
 } from "react-router-dom";
 import { useState } from 'react'
 import { ethers } from "ethers";
+import MusicNFTMarketplaceAbi from '../contractsData/MusicNFTMarketplace.json'
+import MusicNFTMarketplaceAddress from '../contractsData/MusicNFTMarketplace-address.json'
 import { Spinner, Navbar, Nav, Button, Container } from 'react-bootstrap'
 import logo from './logo.png';
 import './App.css';
@@ -24,10 +26,10 @@ function App() {
     const signer = provider.getSigner()
     loadContract(signer)
   }
-  
+
   const loadContract = async (signer) => {
     // Get deployed copy of music nft marketplace contract
-    // const contract = new ethers.Contract(MusicNFTMarketplaceAddress.address, MusicNFTMarketplaceAbi.abi, signer)
+    const contract = new ethers.Contract(MusicNFTMarketplaceAddress.address, MusicNFTMarketplaceAbi.abi, signer)
     // setContract(contract)
     // setLoading(false)
   }
