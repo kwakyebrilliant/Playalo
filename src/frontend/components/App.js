@@ -30,8 +30,8 @@ function App() {
   const loadContract = async (signer) => {
     // Get deployed copy of music nft marketplace contract
     const contract = new ethers.Contract(MusicNFTMarketplaceAddress.address, MusicNFTMarketplaceAbi.abi, signer)
-    // setContract(contract)
-    // setLoading(false)
+    setContract(contract)
+    setLoading(false)
   }
 
   return (
