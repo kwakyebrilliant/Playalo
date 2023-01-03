@@ -63,7 +63,7 @@ function App() {
 
                     </Nav.Link>
                   ) : (
-                    <Button variant="outline-light">Connect Wallet</Button>
+                    <Button onClick={web3Handler} variant="outline-light">Connect Wallet</Button>
                   )}
                 </Nav>
               </Navbar.Collapse>
