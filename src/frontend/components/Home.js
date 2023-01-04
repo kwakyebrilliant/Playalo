@@ -6,6 +6,11 @@ import { Button, Card, ButtonGroup } from 'react-bootstrap';
 const Home = ({ contract }) => {
 
     const {loading, setLoading} = useState(true);
+    const [marketItems, setMarketItems] = useState(null)
+    const loadMarketplaceItems = async () => {
+        // Get all unsold items/tokens
+    const results = await contract.getAllUnsoldTokens()
+    }
 
     if (loading) return (
         <main style={{ padding: "1rem 0"}}>
