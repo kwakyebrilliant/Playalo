@@ -10,6 +10,11 @@ const Home = ({ contract }) => {
     const loadMarketplaceItems = async () => {
         // Get all unsold items/tokens
     const results = await contract.getAllUnsoldTokens()
+
+    const marketItems = await Promise.all(results.map(async i => {
+        // get uri url from contract
+      const uri = await contract.tokenURI(i.tokenId)
+    } ))
     }
 
     if (loading) return (
