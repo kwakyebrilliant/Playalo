@@ -5,7 +5,10 @@ import { Button, Card, ButtonGroup } from 'react-bootstrap';
 
 const Home = ({ contract }) => {
 
-    const {loading, setLoading} = useState(true);
+    const audioRef = useRef(null);
+    const [loading, setLoading] = useState(true)
+    const [isPlaying, setIsPlaying] = useState(null)
+    const [currentItemIndex, setCurrentItemIndex] = useState(0)
     const [marketItems, setMarketItems] = useState(null)
     const loadMarketplaceItems = async () => {
         // Get all unsold items/tokens
@@ -30,14 +33,30 @@ const Home = ({ contract }) => {
     setMarketItems(marketItems)
     setLoading(false)
     }
-
+    const buyMarketItem = async (item) => {
+        await (await contract.buyToken(item.itemId, { value: item.price })).wait()
+        loadMarketplaceItems()
+      }
+    useEffect(() => {
+        marketItems && loadMarketplaceItems()
+    })
     if (loading) return (
         <main style={{ padding: "1rem 0"}}>
             <h2>Loading...</h2>
         </main>
     ) 
   return (
-    <div>Home</div>
+    <div>
+        {marketItems.length > 0 ?
+        <div className="row">
+
+        </div>
+        : (
+            <main style={{ padding: '1rem 0'}}>
+                <h2>No listed assets</h2>
+            </main>
+        )}
+    </div>
   )
 }
 
