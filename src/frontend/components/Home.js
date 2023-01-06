@@ -17,6 +17,15 @@ const Home = ({ contract }) => {
       // use uri to fetch the nft metadata stored on ipfs 
       const response = await fetch(uri + ".json")
       const metadata = await response.json()
+      const identicon = `data:image/png;base64,${new Identicon(metadata.name + metadata.price, 330).toString()}`
+       // define item object
+       let item = {
+        price: i.price,
+        itemId: i.tokenId,
+        name: metadata.name,
+        audio: metadata.audio,
+        identicon
+      }
     } ))
     }
 
