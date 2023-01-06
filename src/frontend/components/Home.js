@@ -37,8 +37,36 @@ const Home = ({ contract }) => {
         await (await contract.buyToken(item.itemId, { value: item.price })).wait()
         loadMarketplaceItems()
       }
+      const skipSong = (forwards) => {
+        if (forwards) {
+          setCurrentItemIndex(() => {
+            let index = currentItemIndex
+            index++
+            if (index > marketItems.length - 1) {
+              index = 0;
+            }
+            return index
+          })
+        } else {
+          setCurrentItemIndex(() => {
+            let index = currentItemIndex
+            index--
+            if (index < 0) {
+              index = marketItems.length - 1;
+            }
+            return index
+          })
+        }
+      }
+      useEffect(() => {
+        if (isPlaying) {
+          audioRef.current.play()
+        } else if (isPlaying !== null) {
+          audioRef.current.pause()
+        }
+      })
     useEffect(() => {
-        marketItems && loadMarketplaceItems()
+        !marketItems && loadMarketplaceItems()
     })
     if (loading) return (
         <main style={{ padding: "1rem 0"}}>
