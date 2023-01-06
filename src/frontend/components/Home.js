@@ -49,6 +49,27 @@ const Home = ({ contract }) => {
     <div>
         {marketItems.length > 0 ?
         <div className="row">
+             <main role="main" className="col-lg-12 mx-auto" style={{ maxWidth: '500px' }}>
+                <div className="content mx-auto">
+                    <audio src={marketItems[currentItemIndex].audio} ref={audioRef}></audio>
+                        <Card>
+                            <Card.Header>{currentItemIndex + 1} of {marketItems.length}</Card.Header>
+                                <Card.Img variant="top" src={marketItems[currentItemIndex].identicon} />
+                                    <Card.Body color="secondary">
+                                        <Card.Title as="h2" > {marketItems[currentItemIndex].name}</Card.Title>
+                            
+                            </Card.Body>
+                            <Card.Footer>
+                                <div className='d-grid my-1'>
+                                    <Button onClick={() => buyMarketItem(marketItems[currentItemIndex])} variant="primary" size="lg">
+                                    {`Buy for ${ethers.utils.formatEther(marketItems[currentItemIndex].price)} ETH`}
+                                    </Button>
+                                </div>
+                            </Card.Footer>
+                        </Card>
+
+                </div>
+            </main>
 
         </div>
         : (
