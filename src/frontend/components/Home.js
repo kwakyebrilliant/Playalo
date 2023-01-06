@@ -26,7 +26,9 @@ const Home = ({ contract }) => {
         audio: metadata.audio,
         identicon
       }
-    } ))
+    }))
+    setMarketItems(marketItems)
+    setLoading(false)
     }
 
     if (loading) return (
