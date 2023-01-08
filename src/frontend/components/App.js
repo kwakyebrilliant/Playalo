@@ -36,7 +36,7 @@ function App() {
     setContract(contract)
     setLoading(false)
   }
-
+ 
   return (
     <BrowserRouter>
       <div className="App">
